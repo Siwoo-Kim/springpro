@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <context:component-scan base-package="com.siwoo.springpro.ch3.collection_bean.annotated" />
+
+    <bean name="injectCollection" class="com.siwoo.springpro.ch3.collection_bean.CollectionInjection"></bean>
+
+    <util:map id="map" map-class="java.util.HashMap">
+        <entry key="someValue" value="It's a friday"></entry>
+        <entry key="someBean" value-ref="lyricHolder"></entry>
+    </util:map>
+
+    <util:properties id="props">
+        <prop key="firstName">Siwoo</prop>
+        <prop key="lastName">Kim</prop>
+    </util:properties>
+
+    <util:set id="set">
+        <value>I can't believe I get to see your face</value>
+        <ref bean="lyricHolder" />
+    </util:set>
+
+    <util:list id="list">
+        <value>You've bean working and I've bean waiting</value>
+        <ref bean="lyricHolder" />
+    </util:list>
+</beans>

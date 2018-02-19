@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="oracle" name="wisdom" class="com.siwoo.springpro.ch3.BookwormOracle" />
+
+    <bean id="injectRef" class="com.siwoo.springpro.ch3.InjectRef">
+        <property name="oracle">
+            <ref bean="wisdom" />
+        </property>
+    </bean>
+
+    <bean id="lyricHolder" class="com.siwoo.springpro.ch3.collection_bean.CollectionInjection$LyricHolder" />
+
+    <bean id="injectCollection" class="com.siwoo.springpro.ch3.collection_bean.CollectionInjection">
+        <property name="map">
+            <map>
+                <entry key="someValue" value="It's a Friday, we finally made it"/>
+                <entry key="someBean" value-ref="lyricHolder" />
+            </map>
+        </property>
+        <property name="props">
+            <props>
+                <prop key="firstName">John</prop>
+                <prop key="lastName">Mayer</prop>
+            </props>
+        </property>
+        <property name="set">
+            <set>
+                <value>I can't believe I get to see your face</value>
+                <value>I can't believe I get to see your face</value>
+                <value>I can't believe I get to see your face</value>
+                <ref bean="lyricHolder" />
+            </set>
+        </property>
+        <property name="list">
+            <list>
+                <value>You've bean working and I've been wating</value>
+                <ref bean="lyricHolder" />
+            </list>
+        </property>
+    </bean>
+
+    <bean class="com.siwoo.springpro.ch3.lookup_method_injection.Singer" id="singer" />
+
+
+    <bean id="abstractLookupBean" class="com.siwoo.springpro.ch3.lookup_method_injection.AbstractLookupDemoBean">
+        <lookup-method name="getMySinger" bean="singer" />
+    </bean>
+
+    <bean id="standardLookupBean" class="com.siwoo.springpro.ch3.lookup_method_injection.StandardLookupDemoBean">
+        <property name="mySinger" ref="singer"/>
+    </bean>
+
+    <bean class="java.lang.String" c:_0="Hello1"></bean>
+    <bean id="string1" name="myString1" class="java.lang.String" c:_0="Hello2"></bean>
+    <bean name="myString2" class="java.lang.String" c:_0="Hello3"></bean>
+</beans>
