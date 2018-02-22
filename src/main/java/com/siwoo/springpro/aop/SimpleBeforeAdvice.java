@@ -15,6 +15,9 @@ public class SimpleBeforeAdvice implements MethodBeforeAdvice{
         public void song() {
             System.out.println(lyric);
         }
+        public void rest() {
+            System.out.println("zzz");
+        }
     }
 
     @Override

@@ -22,6 +22,7 @@
 
     <properties>
         <spring-version>5.0.3.RELEASE</spring-version>
+        <aspectj-version>1.8.13</aspectj-version>
     </properties>
 
     <dependencies>
@@ -29,6 +30,24 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.20</version>
+        </dependency>
+
+        <!--To use Aspectj pointcut expression-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectj-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
