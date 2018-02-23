@@ -43,7 +43,7 @@ public class ProxyFactoryBeanDemo {
     }
 
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+  /*      AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
         Contact bean = (Contact) configApplicationContext.getBean("bean");
         IsModified proxyInterface = (IsModified) bean;
 
@@ -62,5 +62,18 @@ public class ProxyFactoryBeanDemo {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("META-INF/spring/aop/app-context.xml");
         NewDocumentarist documentarist = (NewDocumentarist) context.getBean("documentarist");
         documentarist.execute();
+        context.close();
+*//*
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("META-INF/spring/aop/complex-advice-context.xml");
+        NewDocumentarist documentarist = (NewDocumentarist) context.getBean("documentarist");
+        documentarist.execute();
+        context.close();
+*/
+
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("META-INF/spring/aop/complex-advice2-context.xml");
+        NewDocumentarist documentarist = (NewDocumentarist) context.getBean("documentarist");
+        documentarist.execute();
+        context.close();
+
     }
 }

@@ -1,5 +1,8 @@
 package com.siwoo.springpro.common;
 
+import org.springframework.stereotype.Component;
+
+@Component("johnMayer")
 public class GrammyGuitarist implements Singer{
 
     public void sing(){
