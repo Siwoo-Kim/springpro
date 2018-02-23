@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+<!--
+    <bean id="oracle" name="wiseworm" class="com.siwoo.springpro.ch3.DependencyInjection$BookwormOracle" />
+-->
+    <context:component-scan base-package="com.siwoo.springpro.ch3" >
+       <!--<context:exclude-filter type="assignable" expression="com.siwoo.springpro.ch3.DeclaringSpringComponents$HelloWorldMessageProvider"></context:exclude-filter>
+        <context:exclude-filter type="assignable" expression="com.siwoo.springpro.ch3.DeclaringSpringComponents$StandardOutMessageRenderer"></context:exclude-filter>-->
+    </context:component-scan>
+
+    <!--
+    <bean id="provider" class="com.siwoo.springpro.ch3.DeclaringSpringComponents$HelloWorldMessageProvider"></bean>
+
+    <bean id="renderer" class="com.siwoo.springpro.ch3.DeclaringSpringComponents$StandardOutMessageRenderer"
+         p:messageProvider-ref="provider"/>
+-->
+    <bean id="injectSimpleConfig" class="com.siwoo.springpro.ch3.DeclaringSpringComponents$InjectSimpleConfig" />
+
+    <bean id="injectSimple3" class="com.siwoo.springpro.ch3.DeclaringSpringComponents$InjectSimple"
+            p:name="#{injectSimpleConfig.name}"
+            p:age="#{injectSimpleConfig.age + 1}"
+            p:programmer="#{!injectSimpleConfig.programmer}"
+    />
+</beans>
