@@ -7,9 +7,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/util
-       http://www.springframework.org/schema/util/spring-util.xsd">
+       http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
     <!--
     <context:property-placeholder location="classpath:/META-INF/spring/jdbc/properties/*.properties" />
  
@@ -18,10 +16,9 @@
             p:url="${jdbc.url}" p:password="${jdbc.password}" p:username="${jdbc.username}"
     />
     -->
-    <util:properties id="jdbc" location="classpath:/META-INF/spring/jdbc/properties/jdbc.properties" />
-
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-          p:driverClassName="#{jdbc.driverClassName}"
+    <util:properties id="jdbc" location="classpath:/META-INF/spring/jdbc/properties/*.properties" />
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          p:driverClassName-ref="#{jdbc.driverClassName}"
           p:url="#{jdbc.url}" p:password="#{jdbc.password}" p:username="#{jdbc.username}"
     />
 

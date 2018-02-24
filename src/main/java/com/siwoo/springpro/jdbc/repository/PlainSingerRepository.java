@@ -2,6 +2,8 @@ package com.siwoo.springpro.jdbc.repository;
 
 import com.siwoo.springpro.jdbc.domain.Singer;
 import lombok.extern.slf4j.Slf4j;
+
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -103,6 +105,7 @@ public class PlainSingerRepository implements SingerRepository {
         }finally {
             closeConnection(connection);
         }
+
     }
 
     @Override
@@ -132,7 +135,7 @@ public class PlainSingerRepository implements SingerRepository {
     }
 
     @Override
-    public void insertWithDetail(Singer singer) {
+    public void insertWithAlbum(Singer singer) {
         throw new UnsupportedOperationException("Unsupported method");
     }
 }

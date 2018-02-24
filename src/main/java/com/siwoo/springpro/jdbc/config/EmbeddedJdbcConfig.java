@@ -4,6 +4,7 @@ import com.siwoo.springpro.jdbc.repository.JdbcSingerRepository;
 import com.siwoo.springpro.jdbc.repository.SingerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;

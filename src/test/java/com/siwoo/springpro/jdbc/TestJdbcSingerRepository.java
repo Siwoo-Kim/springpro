@@ -37,7 +37,7 @@ public class TestJdbcSingerRepository {
         log.info(singerName);
     }
 
-    private static final Consumer<Singer> checkSinger = singer ->  {
+    public static final Consumer<Singer> checkSinger = singer ->  {
         log.info(singer.toString());
         if(singer.getAlbums() != null){
             for(Album album : singer.getAlbums()){

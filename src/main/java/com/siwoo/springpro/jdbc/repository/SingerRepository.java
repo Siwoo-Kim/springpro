@@ -17,6 +17,6 @@ public interface SingerRepository {
     void update(Singer singer);
     void delete(Long singerId);
     List<Singer> findAllWithDetail();
-    void insertWithDetail(Singer singer);
+    void insertWithAlbum(Singer singer);
 
 }
