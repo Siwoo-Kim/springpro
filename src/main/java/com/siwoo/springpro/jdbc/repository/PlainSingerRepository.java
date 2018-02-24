@@ -58,18 +58,28 @@ public class PlainSingerRepository implements SingerRepository {
     }
 
     @Override
+    public List<Singer> findAllWithAlbums() {
+        throw new UnsupportedOperationException("Unsupported method");
+    }
+
+    @Override
     public List<Singer> findByFirstName(String firstName) {
-        return null;
+        throw new UnsupportedOperationException("Unsupported method");
+    }
+
+    @Override
+    public String findNameById(Long id) {
+        throw new UnsupportedOperationException("Unsupported method");
     }
 
     @Override
     public String findLastNameById(Long id) {
-        return null;
+        throw new UnsupportedOperationException("Unsupported method");
     }
 
     @Override
     public String findFirstNameById(Long id) {
-        return null;
+        throw new UnsupportedOperationException("Unsupported method");
     }
 
     @Override
@@ -97,7 +107,7 @@ public class PlainSingerRepository implements SingerRepository {
 
     @Override
     public void update(Singer singer) {
-
+        throw new UnsupportedOperationException("Unsupported method");
     }
 
     @Override
@@ -118,11 +128,11 @@ public class PlainSingerRepository implements SingerRepository {
 
     @Override
     public List<Singer> findAllWithDetail() {
-        return null;
+        throw new UnsupportedOperationException("Unsupported method");
     }
 
     @Override
     public void insertWithDetail(Singer singer) {
-
+        throw new UnsupportedOperationException("Unsupported method");
     }
 }

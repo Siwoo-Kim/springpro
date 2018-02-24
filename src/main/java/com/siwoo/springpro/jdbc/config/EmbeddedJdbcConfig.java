@@ -1,8 +1,12 @@
 package com.siwoo.springpro.jdbc.config;
 
+import com.siwoo.springpro.jdbc.repository.JdbcSingerRepository;
+import com.siwoo.springpro.jdbc.repository.SingerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
@@ -27,4 +31,24 @@ public class EmbeddedJdbcConfig {
             return null;
         }
     }
+
+    @Bean
+    SingerRepository singerRepository(){
+        JdbcSingerRepository singerRepository = new JdbcSingerRepository();
+        return singerRepository;
+    }
+
+    @Bean
+    NamedParameterJdbcTemplate jdbcTemplate(){
+        NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(dataSource());
+        return jdbcTemplate;
+    }
+
+    /*@Bean
+    JdbcTemplate jdbcTemplate(){
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        jdbcTemplate.setDataSource(dataSource());
+        return jdbcTemplate;
+    }
+    */
 }
