@@ -3,17 +3,27 @@ package com.siwoo.springpro.hibernate.domain;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
-
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity @Table(name="singer")
-@Getter @Setter @ToString
+@Getter @Setter @ToString(exclude = {"albums"})
+@NamedQueries({
+        @NamedQuery(name = "Singer.findAllWithAlbum",
+        query = "select distinct s from Singer s " +
+                "left join fetch s.albums a " +
+                "left join fetch s.instruments i"),
+        @NamedQuery(name="Singer.findById",
+        query = "select distinct s from Singer s " +
+                "left join fetch s.albums a " +
+                "left join fetch s.instruments i " +
+                "where s.id = :id"
+        )
+})
 public class Singer implements Serializable{
 
     @Id @GeneratedValue(strategy = IDENTITY)

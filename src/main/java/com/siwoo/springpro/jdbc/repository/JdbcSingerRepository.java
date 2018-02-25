@@ -158,4 +158,9 @@ public class JdbcSingerRepository implements SingerRepository /*, InitializingBe
         throw new UnsupportedOperationException("Unsupported method");
     }
 
+    @Override
+    public Singer findById(Long id) {
+        return null;
+    }
+
 }

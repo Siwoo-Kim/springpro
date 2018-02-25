@@ -30,30 +30,43 @@ public class HibernateConfig {
 
     @Bean
     public DataSource dataSource(){
+        /*
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setUrl("jdbc:mysql://localhost:3306/prospring");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setPassword("java");
         dataSource.setUsername("java");
         return dataSource;
+        */
+        try{
+            EmbeddedDatabaseBuilder databaseBuilder = new EmbeddedDatabaseBuilder();
+            return databaseBuilder.setType(EmbeddedDatabaseType.H2)
+                    .addScripts("classpath:META-INF/sql/schema.sql","classpath:META-INF/sql/test-data.sql").build();
+        }catch (Exception e){
+            log.error("Embedded DataSource bean cannot be created!",e);
+            return null;
+        }
+
     }
 
     private Properties hibernateProperties() {
         Properties hibernateProp = new Properties();
-        hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
+        /*hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");*/
+        hibernateProp.put("hibernate.dialect","org.hibernate.dialect.H2Dialect");
         hibernateProp.put("hibernate.format_sql", true);
         hibernateProp.put("hibernate.use_sql_comments", true);
         hibernateProp.put("hibernate.show_sql", true);
         hibernateProp.put("hibernate.max_fetch_depth", 3);
         hibernateProp.put("hibernate.jdbc.batch_size", 10);
         hibernateProp.put("hibernate.jdbc.fetch_size", 50);
+        
         return hibernateProp;
     }
 
     @Bean public SessionFactory sessionFactory() throws IOException {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
-        sessionFactoryBean.setPackagesToScan("com.siwoo.springpro.hibernate");
+        sessionFactoryBean.setPackagesToScan("com.siwoo.springpro.hibernate.domain");
         sessionFactoryBean.setHibernateProperties(hibernateProperties());
         sessionFactoryBean.afterPropertiesSet();
         return sessionFactoryBean.getObject();

@@ -138,4 +138,9 @@ public class PlainSingerRepository implements SingerRepository {
     public void insertWithAlbum(Singer singer) {
         throw new UnsupportedOperationException("Unsupported method");
     }
+
+    @Override
+    public Singer findById(Long id) {
+        return null;
+    }
 }

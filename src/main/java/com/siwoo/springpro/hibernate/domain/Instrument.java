@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity @Table(name="instrument")
-@Getter @Setter @ToString
+@Getter @Setter @ToString(exclude = "singers")
 public class Instrument implements Serializable {
     @Id @Column(name="instrument_id")
     private String instrumentId;
