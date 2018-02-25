@@ -3,11 +3,11 @@ package com.siwoo.springpro.jpa.domain;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -49,10 +49,15 @@ public class JSinger implements Serializable{
     private String lastName;
 
     @Column(name="birth_date")
-    private LocalDate birthDate;
+    private LocalDateTime birthDate;
 
     @OneToMany(mappedBy = "singer",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<JAlbum> albums = new HashSet<>();
+
+    public void addAlbum(JAlbum album){
+        album.setSinger(this);
+        albums.add(album);
+    }
 
     @ManyToMany
     @JoinTable(name = "singer_instrument",

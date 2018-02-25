@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Entity @Table(name="album") @NoArgsConstructor(access = AccessLevel.PACKAGE)
+@Entity @Table(name="album") @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter @Setter @ToString
 public class JAlbum implements Serializable{
 

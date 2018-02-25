@@ -40,7 +40,14 @@ public class JSingerServiceImpl implements JSingerService {
 
     @Override @Transactional(readOnly = false)
     public JSinger save(JSinger singer) {
-        throw new UnsupportedOperationException("");
+        if(singer.getId() == null){
+            log.info("Inserting new singer");
+            entityManager.persist(singer);
+        }else{
+            log.info("Updating new singer");
+            entityManager.merge(singer);
+        }
+        return singer;
     }
 
     @Override @Transactional(readOnly = false)
